@@ -1,0 +1,21 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9090/eureka
+server:
+  port: 8084
+spring:
+  application:
+    name: Employee-Document-Service
+  huggingface:
+    apiUrl: https://api-inference.huggingface.co/models/gpt2
+    apiToken: 
+#    servlet:
+#        multipart:
+#            max-file-size: 100MB
+#            max-request-size: 100MB
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
