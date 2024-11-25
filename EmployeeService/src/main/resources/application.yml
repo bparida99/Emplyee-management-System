@@ -1,0 +1,22 @@
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:9090/eureka
+server:
+    port: 8085
+spring:
+    application:
+        name: EmployeeService
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        properties:
+            hibernate:
+            format_sql: true
+            dialect: org.hibernate.dialect.MySQL57InnoDBDialect
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3309/utility
+        username: root
+        password: Root@123
