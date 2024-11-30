@@ -6,17 +6,7 @@ server:
     port: 8085
 spring:
     application:
-        name: EmployeeService
-    jpa:
-        hibernate:
-            ddl-auto: update
-        show-sql: true
-        properties:
-            hibernate:
-            format_sql: true
-            dialect: org.hibernate.dialect.MySQL57InnoDBDialect
-    datasource:
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3309/utility
-        username: root
-        password: Root@123
+        name: Employee-Service
+    data:
+        mongodb:
+            uri: mongodb://localhost:27017/Employee-DB
