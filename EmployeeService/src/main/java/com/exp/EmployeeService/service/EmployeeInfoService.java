@@ -29,6 +29,6 @@ public class EmployeeInfoService {
         return employeeInfoDAO.findById(id).flatMap(info->{
            info.setAge(employeeInfo.getAge());
             return employeeInfoDAO.save(info);
-        });
+        }).switchIfEmpty(Mono.empty());
     }
 }
