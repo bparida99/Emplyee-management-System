@@ -12,3 +12,15 @@ Employee-Document-Service/target/classes/application.yml
 Employee-Document-Service/target/classes/com/employee/document/config/HuggingFaceProperties.class
 Employee-Document-Service/target/classes/com/employee/document/controller/PdfController.class
 Employee-Document-Service/target/classes/com/employee/document/EmployeeDocumentServiceApplication.class
+Ai-Bot-Service/target/classes/application.yml
+Ai-Bot-Service/target/classes/com/employee/document/config/HuggingFaceProperties.class
+Ai-Bot-Service/target/classes/com/employee/document/controller/PdfController.class
+Ai-Bot-Service/target/classes/com/employee/document/EmployeeDocumentServiceApplication.class
+Ai-Bot-Service/target/classes/com/employee/document/service/HuggingFaceService.class
+Ai-Bot-Service/.idea/codeStyles/codeStyleConfig.xml
+Ai-Bot-Service/.idea/codeStyles/Project.xml
+Ai-Bot-Service/.idea/compiler.xml
+Ai-Bot-Service/.idea/encodings.xml
+Ai-Bot-Service/.idea/jarRepositories.xml
+Ai-Bot-Service/.idea/misc.xml
+Ai-Bot-Service/.idea/vcs.xml
