@@ -9,7 +9,7 @@ spring:
     name: Ai-Bot-Service
   huggingface:
     apiUrl: https://api-inference.huggingface.co/models/gpt2
-    apiToken: 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
+    apiToken: 
 
 management:
   endpoints:
