@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 import reactor.core.publisher.Sinks;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/employee-service/v1")
 public class EmployeeInfoController {
 
     @Autowired
