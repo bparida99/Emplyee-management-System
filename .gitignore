@@ -7,3 +7,8 @@ Employee-Document-Service/.idea/jarRepositories.xml
 Employee-Document-Service/.idea/misc.xml
 Employee-Document-Service/.idea/vcs.xml
 Employee-Document-Service/.idea/workspace.xml
+Employee-Document-Service/target/classes/com/employee/document/service/HuggingFaceService.class
+Employee-Document-Service/target/classes/application.yml
+Employee-Document-Service/target/classes/com/employee/document/config/HuggingFaceProperties.class
+Employee-Document-Service/target/classes/com/employee/document/controller/PdfController.class
+Employee-Document-Service/target/classes/com/employee/document/EmployeeDocumentServiceApplication.class
