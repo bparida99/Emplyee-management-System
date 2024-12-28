@@ -1,10 +1,10 @@
-package com.employee.document;
+package com.ai.aibotservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EmployeeDocumentServiceApplicationTests {
+class AiBotServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

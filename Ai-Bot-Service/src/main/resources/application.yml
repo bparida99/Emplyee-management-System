@@ -1,15 +1,15 @@
+spring:
+  ai:
+    ollama:
+      base-url: http://localhost:11434/
+      model: llama3.2
+
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:9090/eureka
 server:
   port: 8084
-spring:
-  application:
-    name: Ai-Bot-Service
-  huggingface:
-    apiUrl: https://api-inference.huggingface.co/models/gpt2
-    apiToken: 
 
 management:
   endpoints:

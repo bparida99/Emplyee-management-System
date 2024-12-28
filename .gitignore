@@ -25,3 +25,7 @@ Ai-Bot-Service/.idea/jarRepositories.xml
 Ai-Bot-Service/.idea/misc.xml
 Ai-Bot-Service/.idea/vcs.xml
 Tokens.txt
+Ai-Bot-Service/.mvn/wrapper/maven-wrapper.properties
+Ai-Bot-Service/.gitattributes
+Ai-Bot-Service/mvnw
+Ai-Bot-Service/mvnw.cmd
