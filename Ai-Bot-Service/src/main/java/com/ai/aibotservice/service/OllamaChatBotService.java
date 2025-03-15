@@ -2,8 +2,8 @@ package com.ai.aibotservice.service;
 
 import com.ai.aibotservice.util.CustomUtility;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 @Service
 public class OllamaChatBotService {
@@ -15,10 +15,10 @@ public class OllamaChatBotService {
         this.customUtility = customUtility;
     }
 
-    public String generateResult(String prompt){
-        return  chatClient
+    public Mono<String> generateResult(String prompt){
+        return  Mono.fromCallable(() ->chatClient
                 .prompt(prompt)
                 .tools(customUtility)
-                .call().content();
+                .call().content());
     }
 }

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 @RestController
 public class OllamaChatBotController {
@@ -13,7 +14,7 @@ public class OllamaChatBotController {
     private OllamaChatBotService ollamaChatBotService;
 
     @GetMapping("/chat/{prompt}")
-    public String chat(@PathVariable String prompt){
+    public Mono<String> chat(@PathVariable String prompt){
         return ollamaChatBotService.generateResult(prompt);
     }
 }
