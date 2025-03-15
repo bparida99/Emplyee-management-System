@@ -14,7 +14,7 @@ public class OllamaChatBotController {
     private OllamaChatBotService ollamaChatBotService;
 
     @GetMapping("/chat/{prompt}")
-    public Mono<String> chat(@PathVariable String prompt){
+    public String chat(@PathVariable String prompt){
         return ollamaChatBotService.generateResult(prompt);
     }
 }

@@ -10,3 +10,10 @@ spring:
     data:
         mongodb:
             uri: mongodb://localhost:27017/Employee-DB
+    ai:
+        mcp:
+            server:
+                name: webflux-mcp-server
+                version: 1.0.0
+                type: ASYNC
+                sse-message-endpoint: /mcp/messages

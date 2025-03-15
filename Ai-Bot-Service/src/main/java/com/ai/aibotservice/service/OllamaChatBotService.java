@@ -1,24 +1,24 @@
 package com.ai.aibotservice.service;
 
-import com.ai.aibotservice.util.CustomUtility;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 @Service
 public class OllamaChatBotService {
-    private final CustomUtility customUtility;
     private final ChatClient chatClient;
 
-    OllamaChatBotService(ChatClient.Builder chatClientBuilder,CustomUtility customUtility){
+    private final ToolCallbackProvider toolCallbackProvider;
+
+    OllamaChatBotService(ChatClient.Builder chatClientBuilder,ToolCallbackProvider toolCallbackProvider){
         this.chatClient = chatClientBuilder.build();
-        this.customUtility = customUtility;
+        this.toolCallbackProvider = toolCallbackProvider;
     }
 
-    public Mono<String> generateResult(String prompt){
-        return  Mono.fromCallable(() ->chatClient
+    public String generateResult(String prompt){
+        return  chatClient
                 .prompt(prompt)
-                .tools(customUtility)
-                .call().content());
+                .tools(toolCallbackProvider)
+                .call().content();
     }
 }
