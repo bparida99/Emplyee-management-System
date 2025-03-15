@@ -1,8 +1,11 @@
 package com.ai.aibotservice.service;
 
+import com.ai.aibotservice.dto.EmployeeInfo;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OllamaChatBotService {
@@ -15,10 +18,16 @@ public class OllamaChatBotService {
         this.toolCallbackProvider = toolCallbackProvider;
     }
 
-    public String generateResult(String prompt){
-        return  chatClient
-                .prompt(prompt)
-                .tools(toolCallbackProvider)
-                .call().content();
+    public Object generateResult(String prompt) {
+        ChatClient.CallResponseSpec response =
+                chatClient.prompt(prompt).tools(toolCallbackProvider).call();
+        try {
+            List<EmployeeInfo> employeeList = response.entity(List.class);
+            if (!employeeList.isEmpty()) {
+                return employeeList;
+            }
+        } catch (Exception ignored) {
+        }
+        return "No data found";
     }
 }
