@@ -5,7 +5,6 @@ import com.exp.EmployeeService.service.EmployeeInfoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -13,7 +12,7 @@ import reactor.core.publisher.Mono;
 import reactor.core.publisher.Sinks;
 
 @RestController
-@RequestMapping("/employee-service/v1")
+@RequestMapping("/v1/employee")
 public class EmployeeInfoController {
 
     @Autowired
@@ -21,40 +20,35 @@ public class EmployeeInfoController {
 
     Sinks.Many<EmployeeInfo> employeeSync = Sinks.many().replay().all();
 
-    @PostMapping("/saveEmployeeInfo")
+    @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<EmployeeInfo> saveEmployeeInfo(@RequestBody @Valid EmployeeInfo employeeInfo){
+    public Mono<EmployeeInfo> saveEmployeeInfo(@RequestBody @Valid EmployeeInfo employeeInfo) {
         return employeeInfoService.addEmployeeInfo(employeeInfo).log();
     }
 
-    @GetMapping("/fetchAllEmployees")
+    @GetMapping("/fetchAll")
     @ResponseStatus(HttpStatus.FOUND)
-    public Flux<EmployeeInfo> fetchAllEmployees(){
+    public Flux<EmployeeInfo> fetchAllEmployees() {
         return employeeInfoService.fetchAllEmployeeInfo().log();
     }
 
-    @GetMapping("/findById/{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.FOUND)
-    public Mono<EmployeeInfo> findById(@PathVariable String id){
+    public Mono<EmployeeInfo> findById(@PathVariable String id) {
         return employeeInfoService.findEmployeeById(id).log();
     }
 
-    @PutMapping("/updateEmployeeInfo/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public Mono<ResponseEntity<EmployeeInfo>> updateEmployeeInfo(@RequestBody EmployeeInfo employeeInfo,
                                                                  @PathVariable String id) {
         return employeeInfoService.updateEmpInfo(employeeInfo, id).map(employee -> {
-            return ResponseEntity.accepted().body(employee);
-        })
+                    return ResponseEntity.accepted().body(employee);
+                })
                 //.switchIfEmpty(Mono.just(ResponseEntity.notFound().build()))
-                .doOnNext(employee->employeeSync.tryEmitNext(employee.getBody()))
+                .doOnNext(employee -> employeeSync.tryEmitNext(employee.getBody()))
                 .log();
 
-    }
-
-    @GetMapping(value = "/getUpdatedEmployee",produces = MediaType.APPLICATION_NDJSON_VALUE)
-    public Flux<EmployeeInfo> getUpdatedEmployee(){
-        return employeeSync.asFlux().log();
     }
 
 }
