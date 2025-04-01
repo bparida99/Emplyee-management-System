@@ -46,7 +46,7 @@ public class EmployeeInfoControllerTest {
 
     @Test
     void addEmployeeFailTest() {
-        var employeeInfo = new EmployeeInfo("1", "Biswo", 10); // Age is less than 18
+        var employeeInfo = new EmployeeInfo("1", "Biswo", 10); 
         Mockito.when(employeeInfoService.addEmployeeInfo(Mockito.any(EmployeeInfo.class)))
                 .thenReturn(Mono.just(employeeInfo));
 
