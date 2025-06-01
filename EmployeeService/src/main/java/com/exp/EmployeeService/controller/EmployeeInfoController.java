@@ -35,7 +35,7 @@ public class EmployeeInfoController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.FOUND)
-    public Mono<EmployeeInfo> findById(@PathVariable String id) {
+    public Mono<EmployeeDto> findById(@PathVariable String id) {
         return employeeInfoService.findEmployeeById(id).log();
     }
 

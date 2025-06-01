@@ -23,12 +23,11 @@ public class EmployeeInfoService {
     }
 
     public Flux<EmployeeDto> fetchAllEmployeeInfo() {
-        var response = employeeCustomDao.getAllEmployeesWithAddresses();
-        return response;
+        return employeeCustomDao.getAllEmployeesWithAddresses();
     }
 
-    public Mono<EmployeeInfo> findEmployeeById(String id) {
-        return employeeInfoDAO.findById(id);
+    public Mono<EmployeeDto> findEmployeeById(String id) {
+        return employeeCustomDao.getEmployeeWithAddressesById(id);
     }
 
     public Mono<EmployeeInfo> updateEmpInfo(EmployeeInfo employeeInfo,String id) {
