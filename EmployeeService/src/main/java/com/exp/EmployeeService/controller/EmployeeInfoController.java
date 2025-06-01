@@ -1,5 +1,6 @@
 package com.exp.EmployeeService.controller;
 
+import com.exp.EmployeeService.dto.EmployeeDto;
 import com.exp.EmployeeService.entity.EmployeeInfo;
 import com.exp.EmployeeService.service.EmployeeInfoService;
 import jakarta.validation.Valid;
@@ -28,7 +29,7 @@ public class EmployeeInfoController {
 
     @GetMapping("/fetchAll")
     @ResponseStatus(HttpStatus.FOUND)
-    public Flux<EmployeeInfo> fetchAllEmployees() {
+    public Flux<EmployeeDto> fetchAllEmployees() {
         return employeeInfoService.fetchAllEmployeeInfo().log();
     }
 

@@ -1,6 +1,8 @@
 package com.exp.EmployeeService.service;
 
+import com.exp.EmployeeService.dao.EmployeeCustomDao;
 import com.exp.EmployeeService.dao.EmployeeInfoDAO;
+import com.exp.EmployeeService.dto.EmployeeDto;
 import com.exp.EmployeeService.entity.EmployeeInfo;
 import org.apache.logging.log4j.LogBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +15,16 @@ public class EmployeeInfoService {
     @Autowired
     private EmployeeInfoDAO employeeInfoDAO;
 
+    @Autowired
+    private EmployeeCustomDao employeeCustomDao;
+
     public Mono<EmployeeInfo> addEmployeeInfo(EmployeeInfo employeeInfo) {
        return employeeInfoDAO.save(employeeInfo);
     }
 
-    public Flux<EmployeeInfo> fetchAllEmployeeInfo() {
-        return employeeInfoDAO.findAll();
+    public Flux<EmployeeDto> fetchAllEmployeeInfo() {
+        var response = employeeCustomDao.getAllEmployeesWithAddresses();
+        return response;
     }
 
     public Mono<EmployeeInfo> findEmployeeById(String id) {

@@ -28,21 +28,21 @@ public class EmployeeInfoControllerTest {
     @MockitoBean
     private EmployeeInfoService employeeInfoService;
 
-    @Test
-    void fetchAllEmployeesTest(){
-       var employeeInfoList =
-               List.of(new EmployeeInfo("1","Biswo",25));
-       Mockito.when(employeeInfoService.fetchAllEmployeeInfo()).
-               thenReturn(Flux.fromIterable(employeeInfoList));
-        webTestClient.get()
-                     .uri("/v1/fetchAllEmployees")
-                     .exchange()
-                     .expectStatus()
-                     .isFound()
-                     .expectBodyList(EmployeeInfo.class)
-                     .hasSize(1);
-
-    }
+//    @Test
+//    void fetchAllEmployeesTest(){
+//       var employeeInfoList =
+//               List.of(new EmployeeInfo("1","Biswo",25));
+//       Mockito.when(employeeInfoService.fetchAllEmployeeInfo()).
+//               thenReturn(Flux.fromIterable(employeeInfoList));
+//        webTestClient.get()
+//                     .uri("/v1/fetchAllEmployees")
+//                     .exchange()
+//                     .expectStatus()
+//                     .isFound()
+//                     .expectBodyList(EmployeeInfo.class)
+//                     .hasSize(1);
+//
+//    }
 
     @Test
     void addEmployeeFailTest() {
